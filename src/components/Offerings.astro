@@ -1,0 +1,99 @@
+---
+const groupFeatures = [
+  'Live gruppetimer hver uke',
+  'Tilgang til opptak',
+  'Fellesskap og støtte',
+  'Progressiv programmering',
+  'Passer alle nivåer',
+];
+
+const premiumFeatures = [
+  'Alt i gruppetimer, pluss:',
+  'Personlig treningsopplegg',
+  '1:1 videotimer',
+  'Direkte meldinger og støtte',
+  'Målsporing og oppfølging',
+];
+---
+
+<section id="program" class="section-padding bg-bg-light">
+  <div class="container-content">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-heading mb-6 text-text-primary text-center">
+      Velg ditt program
+    </h2>
+    <p class="text-text-secondary text-center mb-16 max-w-lg mx-auto">
+      To veier til bedre trening — velg den som passer din hverdag.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Group -->
+      <div class="bg-white rounded-card p-8 md:p-10 shadow-sm border border-text-primary/5 flex flex-col">
+        <h3 class="text-xl font-bold tracking-heading text-text-primary mb-2">Gruppetimer</h3>
+        <p class="text-text-secondary text-sm mb-6">Live yoga i fellesskap</p>
+
+        <div class="mb-8">
+          <span class="text-3xl font-bold text-text-primary">899 kr</span>
+          <span class="text-text-secondary text-sm">/mnd</span>
+        </div>
+
+        <ul class="space-y-3 mb-10 flex-1">
+          {groupFeatures.map(f => (
+            <li class="flex items-start gap-3 text-text-secondary text-[15px]">
+              <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        <a href="https://everfit.com" target="_blank" rel="noopener noreferrer" class="btn-primary text-center w-full">
+          Bli med i gruppen
+        </a>
+        <p class="text-xs text-text-secondary text-center mt-3">
+          Du blir tatt videre til Everfit, vår sikre treningsplattform
+        </p>
+      </div>
+
+      <!-- 1:1 Premium -->
+      <div class="bg-bg-dark rounded-card p-8 md:p-10 shadow-lg border-2 border-accent/30 flex flex-col relative">
+        <div class="absolute -top-3 left-8 bg-accent text-white text-xs font-bold px-4 py-1 rounded-full">
+          Mest personlig
+        </div>
+
+        <h3 class="text-xl font-bold tracking-heading text-text-light mb-2">1:1 Coaching</h3>
+        <p class="text-text-light/60 text-sm mb-6">Skreddersydd for deg</p>
+
+        <div class="mb-8">
+          <span class="text-3xl font-bold text-text-light">2 499 kr</span>
+          <span class="text-text-light/60 text-sm">/mnd</span>
+        </div>
+
+        <ul class="space-y-3 mb-10 flex-1">
+          {premiumFeatures.map((f, i) => (
+            <li class={`flex items-start gap-3 text-[15px] ${i === 0 ? 'text-accent font-medium' : 'text-text-light/70'}`}>
+              {i > 0 && (
+                <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              )}
+              {i === 0 && <span class="w-5" />}
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        <a href="https://everfit.com" target="_blank" rel="noopener noreferrer" class="btn-primary text-center w-full">
+          Start 1:1 coaching
+        </a>
+        <p class="text-xs text-text-light/40 text-center mt-3">
+          Du blir tatt videre til Everfit, vår sikre treningsplattform
+        </p>
+      </div>
+    </div>
+
+    <p class="text-center text-text-secondary mt-10 text-sm" id="kontakt">
+      Usikker på hva som passer? <a href="mailto:hei@christinaskei.com" class="text-accent-dark underline underline-offset-2 hover:text-accent">Send meg en melding</a>, så finner vi ut av det sammen.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+---
+const navLinks = [
+  { label: 'Om', href: '#om' },
+  { label: 'Program', href: '#program' },
+  { label: 'Resultater', href: '#resultater' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="container-content flex items-center justify-between h-16 md:h-20">
+    <!-- Logo -->
+    <a href="/" class="text-lg font-bold tracking-heading text-text-light">
+      Christina Skei
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a href={link.href} class="text-sm font-medium text-text-light/70 hover:text-text-light transition-colors">
+          {link.label}
+        </a>
+      ))}
+      <a href="#program" class="nav-cta btn-primary !py-2.5 !px-6 !text-sm">
+        Kom i gang
+      </a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" class="md:hidden text-text-light p-2" aria-label="Meny">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-bg-dark/98 backdrop-blur-md border-t border-white/10">
+    <div class="container-content py-6 flex flex-col gap-4">
+      {navLinks.map(link => (
+        <a href={link.href} class="text-base font-medium text-text-light/80 hover:text-text-light py-2 mobile-nav-link">
+          {link.label}
+        </a>
+      ))}
+      <a href="#program" class="btn-primary mt-2 text-center mobile-nav-link">
+        Kom i gang
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  let isScrolled = false;
+  let menuOpen = false;
+
+  function updateNav() {
+    const scrolled = window.scrollY > 80;
+    if (scrolled !== isScrolled) {
+      isScrolled = scrolled;
+      if (isScrolled) {
+        nav?.classList.add('bg-bg-dark/95', 'backdrop-blur-md', 'shadow-lg');
+      } else {
+        nav?.classList.remove('bg-bg-dark/95', 'backdrop-blur-md', 'shadow-lg');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  mobileBtn?.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu?.classList.toggle('hidden', !menuOpen);
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

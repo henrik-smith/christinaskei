@@ -1,0 +1,60 @@
+---
+const faqs = [
+  {
+    q: 'Hvilket nivå må jeg være på?',
+    a: 'Alle nivåer er velkomne. Timene er bygget opp slik at du kan tilpasse intensiteten til ditt eget nivå, og jeg gir alternative øvelser underveis.',
+  },
+  {
+    q: 'Hva trenger jeg av utstyr?',
+    a: 'En yogamatte og litt gulvplass er alt du trenger. Blokker og strikk kan være nyttig, men er ikke nødvendig for å komme i gang.',
+  },
+  {
+    q: 'Hva om jeg går glipp av en time?',
+    a: 'Alle live-timer blir tatt opp og er tilgjengelige i Everfit-appen i etterkant, slik at du kan trene når det passer deg.',
+  },
+  {
+    q: 'Hvordan er dette annerledes enn YouTube eller apper?',
+    a: 'Her trener du live med en instruktør som ser deg og gir tilbakemelding i sanntid. Du får et strukturert program som bygger uke for uke, og et fellesskap som holder deg motivert.',
+  },
+  {
+    q: 'Kan jeg bytte mellom gruppe og 1:1?',
+    a: 'Ja, du kan oppgradere eller endre abonnementet ditt når som helst. Ta kontakt så finner vi den beste løsningen for deg.',
+  },
+  {
+    q: 'Hva er Everfit?',
+    a: 'Everfit er en profesjonell treningsplattform som brukes av tusenvis av coacher verden over. Der finner du timeplan, opptak, program, og all kommunikasjon — alt på ett sted.',
+  },
+  {
+    q: 'Hva er avbestillingsreglene?',
+    a: 'Du kan avslutte abonnementet ditt når som helst, uten bindingstid. Avslutter du midt i en måned, beholder du tilgangen ut perioden.',
+  },
+  {
+    q: 'Hvordan vet jeg om 1:1 passer meg?',
+    a: 'Hvis du har spesifikke mål, trenger tilpasning for skader eller begrensninger, eller rett og slett ønsker mer personlig oppfølging — da er 1:1 riktig for deg. Book en gratis samtale så finner vi ut av det sammen.',
+  },
+];
+---
+
+<section id="faq" class="section-padding bg-bg-light">
+  <div class="container-content max-w-3xl">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-heading mb-16 text-text-primary text-center">
+      Vanlige spørsmål
+    </h2>
+
+    <div class="space-y-0 divide-y divide-text-primary/10">
+      {faqs.map((faq, index) => (
+        <details class="group" id={`faq-${index}`}>
+          <summary class="flex items-center justify-between cursor-pointer py-6 text-left">
+            <span class="font-semibold text-text-primary pr-8">{faq.q}</span>
+            <svg class="w-5 h-5 text-text-secondary flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+          </summary>
+          <div class="pb-6 text-text-secondary leading-relaxed -mt-2">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

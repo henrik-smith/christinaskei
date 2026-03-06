@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-base text-text-primary bg-bg-light;
+  }
+
+  ::selection {
+    @apply bg-accent/30;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-semibold rounded-full
+           hover:bg-accent-hover transition-all duration-300 text-[15px] tracking-wide;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-text-light/30 text-text-light font-medium rounded-full
+           hover:border-text-light/60 hover:bg-white/5 transition-all duration-300 text-[15px] tracking-wide;
+  }
+
+  .btn-ghost-dark {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-text-primary/20 text-text-primary font-medium rounded-full
+           hover:border-text-primary/40 hover:bg-black/5 transition-all duration-300 text-[15px] tracking-wide;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-28 lg:py-32;
+  }
+
+  .container-content {
+    @apply max-w-content mx-auto px-5 md:px-8;
+  }
+}

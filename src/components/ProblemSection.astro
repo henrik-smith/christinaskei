@@ -1,0 +1,26 @@
+---
+const painPoints = [
+  'Du vil trene mer, men hverdagen kommer alltid i veien',
+  'Timeplanen på studio passer aldri',
+  'Du har prøvd apper, men savner den menneskelige kontakten',
+  'Du vil ha veiledning, men gruppetimer føles for generelle',
+];
+---
+
+<section class="section-padding bg-bg-light">
+  <div class="container-content max-w-2xl text-center">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-heading mb-12 text-text-primary">
+      Kjenner du deg igjen?
+    </h2>
+
+    <div class="space-y-6">
+      {painPoints.map(point => (
+        <p class="text-lg md:text-xl text-text-secondary leading-relaxed">
+          "{point}"
+        </p>
+      ))}
+    </div>
+
+    <div class="mt-12 w-12 h-px bg-accent mx-auto"></div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+---
+const testimonials = [
+  {
+    quote: 'Jeg gikk fra å aldri trene til 3 ganger i uka. Christina gjør det så enkelt å komme i gang, og timene er det beste med uken min.',
+    name: 'Marte K.',
+    duration: 'Elev i 8 måneder',
+  },
+  {
+    quote: 'Endelig en instruktør som faktisk ser deg, selv i en gruppeøkt. Kroppen min har aldri følt seg bedre.',
+    name: 'Silje T.',
+    duration: 'Elev i 1 år',
+  },
+  {
+    quote: 'Jeg var skeptisk til online yoga, men live-timene med Christina er bedre enn noe studio jeg har prøvd. Fleksibiliteten er uvurderlig.',
+    name: 'Henrik L.',
+    duration: 'Elev i 6 måneder',
+  },
+];
+---
+
+<section id="resultater" class="section-padding bg-bg-light">
+  <div class="container-content">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-heading mb-16 text-text-primary text-center">
+      Det elevene sier
+    </h2>
+
+    <!-- Video testimonial placeholder -->
+    <div class="max-w-2xl mx-auto mb-16">
+      <div class="aspect-video rounded-card bg-bg-dark/5 border border-text-primary/5 flex items-center justify-center cursor-pointer group">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/20 transition-colors">
+            <svg class="w-7 h-7 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <p class="text-sm text-text-secondary">Se hva elevene sier</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text testimonials -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map(t => (
+        <div class="bg-white rounded-card p-8 md:p-10 shadow-sm border border-text-primary/5">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-5 text-accent">
+            {[...Array(5)].map(() => (
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+
+          <blockquote class="text-text-secondary leading-relaxed mb-6">
+            "{t.quote}"
+          </blockquote>
+
+          <div class="flex items-center gap-3">
+            <!-- Avatar placeholder -->
+            <div class="w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-sm">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-text-primary">{t.name}</p>
+              <p class="text-xs text-text-secondary">{t.duration}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

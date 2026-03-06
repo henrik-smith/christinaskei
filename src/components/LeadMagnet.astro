@@ -1,0 +1,125 @@
+---
+---
+
+<section class="section-padding bg-bg-light border-t border-text-primary/5">
+  <div class="container-content max-w-xl text-center">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-heading mb-4 text-text-primary">
+      Ikke klar ennå? Prøv gratis først.
+    </h2>
+
+    <p class="text-text-secondary mb-8 leading-relaxed">
+      Få en gratis 7-dagers yogaplan rett i innboksen — korte, effektive flows du kan gjøre hjemme.
+    </p>
+
+    <form id="lead-magnet-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="Din e-postadresse"
+        class="flex-1 px-5 py-3.5 rounded-full border border-text-primary/15 bg-white text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent text-[15px]"
+      />
+      <button type="submit" class="btn-primary whitespace-nowrap !px-6">
+        Send meg planen
+      </button>
+    </form>
+
+    <p class="text-xs text-text-secondary/60 mt-4">
+      Ingen spam. Kun yoga.
+    </p>
+  </div>
+</section>
+
+<!-- Exit-intent popup -->
+<div id="exit-popup" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-bg-dark/70 backdrop-blur-sm" id="exit-popup-overlay"></div>
+  <div class="relative bg-bg-light rounded-card p-8 md:p-12 max-w-md w-full shadow-2xl text-center">
+    <button id="exit-popup-close" class="absolute top-4 right-4 text-text-secondary hover:text-text-primary transition-colors" aria-label="Lukk">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <h3 class="text-2xl font-bold tracking-heading mb-3 text-text-primary">
+      Vent — ta med deg dette
+    </h3>
+    <p class="text-text-secondary mb-6">
+      Gratis 7-dagers yogaplan. Korte flows du kan gjøre hjemme, helt uforpliktende.
+    </p>
+
+    <form id="exit-popup-form" class="space-y-3">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="Din e-postadresse"
+        class="w-full px-5 py-3.5 rounded-full border border-text-primary/15 bg-white text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent text-[15px]"
+      />
+      <button type="submit" class="btn-primary w-full">
+        Ja, send meg planen
+      </button>
+    </form>
+
+    <p class="text-xs text-text-secondary/60 mt-4">
+      Ingen spam. Kun yoga.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Exit intent (desktop only)
+  let popupShown = false;
+
+  function showPopup() {
+    if (popupShown) return;
+    popupShown = true;
+    const popup = document.getElementById('exit-popup');
+    popup?.classList.remove('hidden');
+    popup?.classList.add('flex');
+  }
+
+  function hidePopup() {
+    const popup = document.getElementById('exit-popup');
+    popup?.classList.add('hidden');
+    popup?.classList.remove('flex');
+  }
+
+  // Desktop: exit intent
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mouseout', (e) => {
+      if (e.clientY <= 0) showPopup();
+    });
+  } else {
+    // Mobile: show after 70% scroll depth
+    let scrollTriggered = false;
+    window.addEventListener('scroll', () => {
+      if (scrollTriggered) return;
+      const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (scrollPercent > 0.7) {
+        scrollTriggered = true;
+        showPopup();
+      }
+    }, { passive: true });
+  }
+
+  document.getElementById('exit-popup-close')?.addEventListener('click', hidePopup);
+  document.getElementById('exit-popup-overlay')?.addEventListener('click', hidePopup);
+
+  // Form handlers (placeholder — connect to Mailerlite)
+  document.querySelectorAll('#lead-magnet-form, #exit-popup-form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      const email = formData.get('email');
+      // TODO: Connect to Mailerlite API
+      // fetch('https://api.mailerlite.com/...', { method: 'POST', body: ... })
+      console.log('Email captured:', email);
+
+      const btn = (e.target as HTMLFormElement).querySelector('button');
+      if (btn) {
+        btn.textContent = 'Sendt! Sjekk innboksen';
+        btn.classList.add('opacity-70', 'pointer-events-none');
+      }
+    });
+  });
+</script>

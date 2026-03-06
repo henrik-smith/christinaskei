@@ -1,0 +1,41 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Velg ditt program',
+    description: 'Gruppe eller 1:1 basert på dine mål og hverdag.',
+  },
+  {
+    number: '02',
+    title: 'Opprett konto på Everfit',
+    description: 'Rask registrering på under 2 minutter.',
+  },
+  {
+    number: '03',
+    title: 'Start treningen',
+    description: 'Bli med på din første time eller motta ditt personlige program.',
+  },
+];
+---
+
+<section class="section-padding bg-bg-dark">
+  <div class="container-content">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-heading mb-16 text-text-light text-center">
+      Slik kommer du i gang
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+      {steps.map(step => (
+        <div class="text-center">
+          <div class="text-5xl font-bold text-accent/30 mb-4">{step.number}</div>
+          <h3 class="text-lg font-bold text-text-light mb-3">{step.title}</h3>
+          <p class="text-text-light/60 leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-text-light/40 text-sm mt-12">
+      All planlegging, betaling og kommunikasjon skjer via Everfit — vår sikre treningsplattform.
+    </p>
+  </div>
+</section>

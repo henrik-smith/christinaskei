@@ -6,5 +6,6 @@ export default defineConfig({
   integrations: [
     tailwind(),
   ],
-  site: 'https://christinaskei.com',
+  site: 'https://henrik-smith.github.io',
+  base: '/christinaskei',
 });

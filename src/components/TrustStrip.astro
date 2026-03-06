@@ -1,0 +1,39 @@
+---
+const credentials = [
+  '14x norgesmester i turn',
+  'Personlig trener, Studio Jobbsprek',
+  'Sertifisert yogainstruktør',
+  '10+ år med treningserfaring',
+  '14x norgesmester i turn',
+  'Personlig trener, Studio Jobbsprek',
+  'Sertifisert yogainstruktør',
+  '10+ år med treningserfaring',
+];
+---
+
+<section class="bg-bg-light border-y border-text-primary/5 overflow-hidden py-5">
+  <div class="marquee-track flex gap-12 whitespace-nowrap">
+    {credentials.map(c => (
+      <span class="flex items-center gap-3 text-sm font-medium text-text-secondary tracking-wide uppercase">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
+        {c}
+      </span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: marquee 25s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+</style>

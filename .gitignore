@@ -17,6 +17,13 @@ pnpm-debug.log*
 .env
 .env.production
 
+# raw media files (large originals)
+*.mov
+*.heic
+
+# old video backups
+public/videos/hero-old.*
+
 # macOS-specific files
 .DS_Store
 
